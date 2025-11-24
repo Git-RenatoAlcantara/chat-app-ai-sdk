@@ -1,15 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// Using Geist fonts via next/font/google can fail under Turbopack in some
+// environments due to internal module resolution issues. We fallback to a
+// reliable Google font pair (Inter + Fira Code) keeping CSS variables so the
+// rest of the app does not break. If you want Geist specifically, download
+// the WOFF2 files and switch to next/font/local.
+import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
+const geistSans = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const geistMono = Fira_Code({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {

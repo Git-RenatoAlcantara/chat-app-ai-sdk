@@ -39,9 +39,18 @@ type ToolUIPartApproval =
     }
   | undefined;
 
+// The upstream ToolUIPart["state"] does not include approval lifecycle states we
+// use in this component. We extend it locally to avoid type errors while keeping
+// compatibility with existing values from the SDK.
+type ConfirmationState =
+  | ToolUIPart["state"]
+  | "approval-requested"
+  | "approval-responded"
+  | "output-denied";
+
 type ConfirmationContextValue = {
   approval: ToolUIPartApproval;
-  state: ToolUIPart["state"];
+  state: ConfirmationState;
 };
 
 const ConfirmationContext = createContext<ConfirmationContextValue | null>(
@@ -60,7 +69,7 @@ const useConfirmation = () => {
 
 export type ConfirmationProps = ComponentProps<typeof Alert> & {
   approval?: ToolUIPartApproval;
-  state: ToolUIPart["state"];
+  state: ConfirmationState;
 };
 
 export const Confirmation = ({
