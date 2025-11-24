@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   serverExternalPackages: [
     "pdf-parse", 
     "canvas",
@@ -19,7 +20,6 @@ const nextConfig: NextConfig = {
       bodySizeLimit: '10mb',
     },
   },
-  turbopack: {},
 };
 
 export default nextConfig;
