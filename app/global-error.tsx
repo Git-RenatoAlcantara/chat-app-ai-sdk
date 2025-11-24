@@ -1,24 +1,35 @@
 'use client';
 
 export default function GlobalError({
-  error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
   return (
-    <html>
-      <body>
-        <div className="min-h-screen flex items-center justify-center p-6">
-          <div className="max-w-md w-full space-y-4 text-center">
-            <h1 className="text-2xl font-semibold">Algo deu errado</h1>
-            <p className="text-muted-foreground text-sm">
+    <html lang="pt-BR">
+      <body className="antialiased">
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}>
+          <div style={{ maxWidth: '28rem', width: '100%', textAlign: 'center' }}>
+            <h1 style={{ fontSize: '1.5rem', fontWeight: 600, marginBottom: '1rem' }}>Algo deu errado</h1>
+            <p style={{ color: '#666', fontSize: '0.875rem', marginBottom: '1.5rem' }}>
               Ocorreu um erro inesperado. Tente novamente.
             </p>
             <button
               onClick={() => reset()}
-              className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:opacity-90"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: '0.375rem',
+                backgroundColor: '#000',
+                color: '#fff',
+                padding: '0.5rem 1rem',
+                fontSize: '0.875rem',
+                fontWeight: 500,
+                border: 'none',
+                cursor: 'pointer',
+              }}
             >
               Tentar novamente
             </button>
